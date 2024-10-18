@@ -5,7 +5,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:paddingHorizontal="24dp"
+    android:paddingVertical="12dp">
 
     <include
         layout="@layout/item_poke_card"
@@ -13,7 +15,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

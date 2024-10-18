@@ -2,7 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/item_poke_card"
-    android:layout_width="140dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     app:cardCornerRadius="8dp">
@@ -42,6 +42,7 @@
             android:src="@drawable/ic_favorite"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/card_image"
+            app:layout_constraintEnd_toStartOf="@id/attack_icon"
             app:tint="@color/red_light" />
 
         <TextView
@@ -86,6 +87,7 @@
             android:src="@drawable/ic_shield"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/card_image"
+            app:layout_constraintStart_toEndOf="@id/attack_icon"
             app:tint="@color/green_light" />
         <TextView
             android:id="@+id/defense_value"
