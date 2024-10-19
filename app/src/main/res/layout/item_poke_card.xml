@@ -17,10 +17,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nome"
+            app:layout_constraintBottom_toTopOf="@id/card_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/card_image" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/card_image"
@@ -33,72 +33,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/card_name" />
 
-        <ImageView
-            android:id="@+id/hp_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:contentDescription="hp icon"
-            android:src="@drawable/ic_favorite"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/card_image"
-            app:layout_constraintEnd_toStartOf="@id/attack_icon"
-            app:tint="@color/red_light" />
-
-        <TextView
-            android:id="@+id/hp_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="10"
-            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-            app:layout_constraintEnd_toEndOf="@id/hp_icon"
-            app:layout_constraintStart_toStartOf="@id/hp_icon"
-            app:layout_constraintTop_toBottomOf="@id/hp_icon" />
-
-        <ImageView
-            android:id="@+id/attack_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:contentDescription="attack icon"
-            android:src="@drawable/ic_flash_on"
-            app:layout_constraintEnd_toStartOf="@id/defense_icon"
-            app:layout_constraintStart_toEndOf="@id/hp_icon"
-            app:layout_constraintTop_toBottomOf="@id/card_image"
-            app:tint="@color/blue_light" />
-        <TextView
-            android:id="@+id/attack_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="10"
-            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-            app:layout_constraintEnd_toEndOf="@id/attack_icon"
-            app:layout_constraintStart_toStartOf="@id/attack_icon"
-            app:layout_constraintTop_toBottomOf="@id/attack_icon" />
-
-        <ImageView
-            android:id="@+id/defense_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:contentDescription="defense icon"
-            android:src="@drawable/ic_shield"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/card_image"
-            app:layout_constraintStart_toEndOf="@id/attack_icon"
-            app:tint="@color/green_light" />
-        <TextView
-            android:id="@+id/defense_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="10"
-            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-            app:layout_constraintEnd_toEndOf="@id/defense_icon"
-            app:layout_constraintStart_toStartOf="@id/defense_icon"
-            app:layout_constraintTop_toBottomOf="@id/defense_icon" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
