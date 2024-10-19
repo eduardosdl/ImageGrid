@@ -1,14 +1,14 @@
 package com.example.imagegrid
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.imagegrid.databinding.ActivityMainBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     /* OBJETIVO
@@ -28,32 +28,25 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        // lista de pokemons (lembrando por enquanto temos apenas o nome)
-        /* aqui temos uma lista estática do nosso "model"
-        * mas pode ser por exemplo os dados de um array que vem da api
-        * */
-        val pokemonsList = listOf(
-            Pokemon("Pikachu"),
-            Pokemon("Charmander"),
-            Pokemon("Squirtle"),
-            Pokemon("Bulbasaur"),
-            Pokemon("Eevee"),
-            Pokemon("Pikachu"),
-            Pokemon("Charmander"),
-            Pokemon("Squirtle"),
-            Pokemon("Bulbasaur"),
-            Pokemon("Eevee")
-        )
-
-        /*
-        * essa propriedade layoutManager pode ser inserida dentro do proprio xml
-        * mas como queremos um grid precisamos usar o GridLayoutManager e
-        * essa propriedade precisa de mais de um parametro por isso usamos aqui
-        * */
+        // mantenho a definição do tipo layout manager em grid
         binding.pokemonRecycleView.layoutManager = GridLayoutManager(this, 2)
-//        binding.pokemonRecycleView.layoutManager = LinearLayoutManager(this)
 
-        val pokemonAdapter = PokemonAdapter(pokemonsList)
-        binding.pokemonRecycleView.adapter = pokemonAdapter
+        // faço a chamada do serviço que realiza a requisição a api por meio de callbacks
+        RetrofitInstance.api.getPokemons().enqueue(object : Callback<PokemonAPIResponseDTO> {
+            override fun onFailure(call: Call<PokemonAPIResponseDTO>, t: Throwable) {
+                Log.e("app-log", "erro na chamada da api: ${t.message}")
+            }
+
+            override fun onResponse(
+                call: Call<PokemonAPIResponseDTO>, response: Response<PokemonAPIResponseDTO>
+            ) {
+                val apiResponse = response.body()
+                if (apiResponse != null) {
+
+                    val pokemonAdapter = PokemonAdapter(apiResponse.results)
+                    binding.pokemonRecycleView.adapter = pokemonAdapter
+                }
+            }
+        })
     }
 }
