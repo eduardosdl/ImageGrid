@@ -5,15 +5,17 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:paddingHorizontal="24dp"
-    android:paddingVertical="12dp">
+    android:paddingVertical="48dp"
+    tools:context=".MainActivity">
 
-    <include
-        layout="@layout/item_poke_card"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/pokemon_recycle_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/item_poke_card" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
