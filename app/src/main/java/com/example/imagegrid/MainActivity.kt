@@ -42,6 +42,11 @@ class MainActivity : AppCompatActivity() {
             ) {
                 val apiResponse = response.body()
                 if (apiResponse != null) {
+                    val pokemonImageUrl =
+                        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${
+                            getPokemonIdFromUrl(apiResponse.results[0].url)
+                        }.png"
+                    Log.e("app-log", "erro na chamada da api: $pokemonImageUrl")
 
                     val pokemonAdapter = PokemonAdapter(apiResponse.results)
                     binding.pokemonRecycleView.adapter = pokemonAdapter
